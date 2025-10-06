@@ -35,7 +35,7 @@ public class GameStateManager : MonoBehaviour
     public void PlayRandomZombie()
     {
         targetTrigger = Random.Range(0, triggers.Length);
-        triggers[targetTrigger].particle.Play();
+        //triggers[targetTrigger].particle.Play();
         GenerateRandomNum();
         txtPrompt.text = "";
 
