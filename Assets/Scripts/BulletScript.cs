@@ -22,16 +22,6 @@ public class BulletScript : MonoBehaviour
 
         cam = Camera.main;
 
-        if (Input.GetAxis("Mouse ScrollWheel") > 0)
-        {
-            power += 100;
-        }
-
-        if (Input.GetAxis("Mouse ScrollWheel") < 0)
-        {
-            power -= 100;
-        }
-
         if (Input.GetMouseButtonDown(0))
         {
             sp = Instantiate(ball, cam.transform.position, Quaternion.identity);

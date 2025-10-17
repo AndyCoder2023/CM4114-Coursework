@@ -7,7 +7,7 @@ public class DamageTester : MonoBehaviour
     public AttributesManager playerAtm;
     public AttributesManager enemyAtm;
 
-    private void Update()
+    public void Update()
     {
         // Damage is dealt to enemy once key is pressed
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -18,6 +18,10 @@ public class DamageTester : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             enemyAtm.DealDamage(playerAtm.gameObject);
+        }
+        if (enemyAtm.health <= 0 )
+        {
+            Destroy(enemyAtm.gameObject);
         }
     }
 }

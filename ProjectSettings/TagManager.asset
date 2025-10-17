@@ -6,6 +6,9 @@ TagManager:
   tags:
   - CinemachineTarget
   - Terrain
+  - Enemy
+  - Cube2
+  - Cube3
   layers:
   - Default
   - TransparentFX
