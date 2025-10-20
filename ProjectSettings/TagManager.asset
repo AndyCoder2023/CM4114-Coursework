@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Cube2
   - Cube3
+  - Path
   layers:
   - Default
   - TransparentFX
