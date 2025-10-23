@@ -11,6 +11,7 @@ TagManager:
   - Cube3
   - Path
   - LevelExit
+  - Hub
   layers:
   - Default
   - TransparentFX
