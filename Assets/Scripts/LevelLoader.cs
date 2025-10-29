@@ -7,13 +7,16 @@ public class LevelLoader : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        // If user touches game object then moves onto next level2
+        // If user touches game object then moves onto next level 2
         if (other.tag == "LevelExit")
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
 
     }
+
+    // Need to add exit button functionality
+  
 }
 
 // https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html

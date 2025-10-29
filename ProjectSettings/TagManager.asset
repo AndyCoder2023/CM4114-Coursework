@@ -12,6 +12,8 @@ TagManager:
   - Path
   - LevelExit
   - Hub
+  - Play
+  - Settings
   layers:
   - Default
   - TransparentFX
