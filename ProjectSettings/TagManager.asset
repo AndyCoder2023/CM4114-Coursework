@@ -14,6 +14,7 @@ TagManager:
   - Hub
   - Play
   - Settings
+  - Collectible
   layers:
   - Default
   - TransparentFX
