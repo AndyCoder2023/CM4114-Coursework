@@ -13,6 +13,10 @@ public class LevelLoader : MonoBehaviour
             SceneManager.LoadScene(2);
         }
 
+        if (other.tag == "GameFinished")
+        {
+            SceneManager.LoadScene(5);
+        }
     }
 
     // Need to add exit button functionality

@@ -15,6 +15,7 @@ TagManager:
   - Play
   - Settings
   - Collectible
+  - GameFinished
   layers:
   - Default
   - TransparentFX
