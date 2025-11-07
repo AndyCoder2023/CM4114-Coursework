@@ -1,16 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyScoreAllocator : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    //[SerializeField]
+    //private int _killScore;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //private ScoreController _scoreController;
+
+    //private void Awake()
+    //{
+    //    _scoreController = FindObjectOfType<ScoreController>();
+    //}
+
+    //public void AllocateScore()
+    //{
+    //    _scoreController.AddScore(_killScore);
+    //}
 }

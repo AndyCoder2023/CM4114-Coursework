@@ -16,11 +16,12 @@ TagManager:
   - Settings
   - Collectible
   - GameFinished
+  - Gun
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Terrain
   - Water
   - UI
   - 
