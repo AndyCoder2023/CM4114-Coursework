@@ -4,8 +4,9 @@ public class GameStateManager : MonoBehaviour
 {
 
     public static GameStateManager instance = null;
-    private int counter;
-    public int health;
+    private int healthPlayer;
+    public int killsPlayer;
+    public int treasurePlayer;
 
     private void Awake()
     {
@@ -19,20 +20,37 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
-    public void AddToCounter(int val)
+    public void AddToHealth(int val)
     {
-        counter += val;
+        healthPlayer = val;
     }
 
-    public int GetCounter()
+    public void AddToKills(int val)
     {
-        return counter;
+        killsPlayer = val;
+    }
+
+    public void AddToTreasure(int val)
+    {
+        treasurePlayer += val;
     }
 
     public int getHealth()
     {
-        return health;
+        return healthPlayer;
     }
+
+    public int GetKills()
+    {
+        return killsPlayer;
+    }
+
+    public int GetTreasure()
+    {
+        return treasurePlayer;
+    }
+
+ 
   }
 
 

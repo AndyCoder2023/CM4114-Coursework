@@ -8,15 +8,18 @@ public class PlayerControl : MonoBehaviour
     // These should be assigned in the Inspector
     public Slider PlayerSlider;
     public TMP_Text healthText;
+    public TMP_Text killText;
+    public TMP_Text treasureText;
 
     // Use healthPlayer for the current health value
     public int healthPlayer = 100;
+    public int killsPlayer = 0;
+    public int treasurePlayer = 0;
 
     // maxHealth will store the starting/maximum health
     public int maxHealth = 0;
-
-    // You don't need 'currentHealth' if you use 'healthPlayer'
-    // int currentHealth = 1; 
+    public int maxKills = 0;
+    public int maxTreasure = 0;
 
     void Start()
     {
@@ -33,10 +36,16 @@ public class PlayerControl : MonoBehaviour
         // Update the text and slider value every frame
         healthText.text = healthPlayer.ToString() + " / " + maxHealth.ToString();
         // The slider's value is set based on the healthPlayer variable
-        PlayerSlider.value = (float)healthPlayer / (float)maxHealth;
+        PlayerSlider.value = healthPlayer;
+
+        // Update the text value for kills
+        killText.text = killsPlayer.ToString();
+
+        // Update the text value for treasure
+        treasureText.text = treasurePlayer.ToString();
+
     }
 
-    // You need to change this to 'OnTriggerEnter' with a capital O, T, and E
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Player was hit by: " + other.gameObject.name);
@@ -51,6 +60,12 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    public void TreasureCounter()
+    {
+        //if (gameObject.Player)
+        //    treasurePlayer++;
+    }
+
     public void TakeDamage(int damage)
     {
         // 1. Decrease the healthPlayer variable
@@ -61,8 +76,10 @@ public class PlayerControl : MonoBehaviour
 
         // 3. The Update method will automatically update the Slider and Text
         //    based on the new healthPlayer value.
-
-        Die();
+        if (healthPlayer == 0)
+        {
+            Die();
+        }
     }
 
     public void Heal(int amount)
@@ -78,9 +95,14 @@ public class PlayerControl : MonoBehaviour
         // based on the new healthPlayer value.
     }
 
+    public void Treasure(int amount)
+    {
+        // Increase health by the specified amount
+        treasurePlayer += amount;
+    }
+
     public void Die()
     {
-        if(healthPlayer <= 0)
             SceneManager.LoadScene(6);
     }
 }

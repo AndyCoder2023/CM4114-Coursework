@@ -9,10 +9,11 @@ public class EnemyControl : MonoBehaviour
 
     // Use healthPlayer for the current health value
     public int healthEnemy = 100;
-
     public int maxHealth = 0;
+    public PlayerControl playerControl;
 
-    //public GameObject Enemy;
+    // Flag to ensure Die logic (like AddKills) runs only once
+    private bool isDead = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,17 +29,15 @@ public class EnemyControl : MonoBehaviour
     void Update()
     {
         EnemyHealthText.text = healthEnemy.ToString() + " / " + maxHealth.ToString();
-        EnemySlider.value = (float)healthEnemy / (float)maxHealth;
+        EnemySlider.value = healthEnemy;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Player was hit by: " + other.gameObject.name);
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "ball" || other.gameObject.tag == "Player")
         {
-            Debug.Log("Damage dealt");
-            // Only take damage if health is greater than 0
-            if (healthEnemy > 0)
+            // Only process damage if the enemy is alive
+            if (!isDead)
             {
                 TakeDamage(20);
             }
@@ -47,13 +46,32 @@ public class EnemyControl : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        // 1. Decrease the healthPlayer variable
+        // 1. Decrease the healthEnemy variable
         healthEnemy -= damage;
 
         // 2. Clamp the health so it doesn't go below 0
         healthEnemy = Mathf.Max(0, healthEnemy);
 
-        // 3. The Update method will automatically update the Slider and Text
-        //    based on the new healthPlayer value.
+        // 3. Check for death after taking damage
+        if (healthEnemy == 0 && !isDead)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        isDead = true;
+
+        // 1. Add kill count to the Player's script
+        if (playerControl != null)
+        {
+            playerControl.killsPlayer++; // Accessing the public int in PlayerControl
+        }
+
+        // 2. Destroy the enemy GameObject
+        Destroy(gameObject);
+
+        // You might want to add particle effects or sound here before destruction.
     }
 }
