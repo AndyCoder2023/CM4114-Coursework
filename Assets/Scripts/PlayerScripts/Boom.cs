@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Boom : MonoBehaviour
 {
 
@@ -14,5 +15,4 @@ public class Boom : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
 }

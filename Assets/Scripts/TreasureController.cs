@@ -5,13 +5,13 @@ using UnityEngine.Events;
 
 public class TreasureController : MonoBehaviour
 {
-    public UnityEvent OnScoreChanged;
+    //public UnityEvent OnScoreChanged;
 
-    public int Score { get; private set; }
+    //public int Score { get; private set; }
 
-    public void AddScore(int amount)
-    {
-        Score += amount;
-        OnScoreChanged.Invoke();
-    }
+    //public void AddScore(int amount)
+    //{
+    //    Score += amount;
+    //    OnScoreChanged.Invoke();
+    //}
 }

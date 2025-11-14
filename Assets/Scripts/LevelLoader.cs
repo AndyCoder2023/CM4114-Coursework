@@ -17,6 +17,11 @@ public class LevelLoader : MonoBehaviour
         {
             SceneManager.LoadScene(5);
         }
+
+        if (other.tag == "GameOver")
+        {
+            SceneManager.LoadScene(6);
+        }
     }
 
     // Need to add exit button functionality

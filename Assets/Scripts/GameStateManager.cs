@@ -4,7 +4,8 @@ public class GameStateManager : MonoBehaviour
 {
 
     public static GameStateManager instance = null;
-    private int _counter;
+    private int counter;
+    public int health;
 
     private void Awake()
     {
@@ -18,19 +19,20 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
-
-
     public void AddToCounter(int val)
     {
-        _counter += val;
+        counter += val;
     }
 
     public int GetCounter()
     {
-        return _counter;
+        return counter;
     }
 
-
-}
+    public int getHealth()
+    {
+        return health;
+    }
+  }
 
 
