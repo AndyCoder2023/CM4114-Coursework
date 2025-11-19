@@ -11,20 +11,21 @@ public class PlayerControl : MonoBehaviour
     public TMP_Text killText;
     public TMP_Text treasureText;
 
-    // Use healthPlayer for the current health value
-    public int healthPlayer = 100;
-    public int killsPlayer = 0;
-    public int treasurePlayer = 0;
+    public int currentHealth;
+
+    //public int killsPlayer = 0;
+    //public int treasurePlayer = 0;
 
     // maxHealth will store the starting/maximum health
-    public int maxHealth = 0;
-    public int maxKills = 0;
-    public int maxTreasure = 0;
+    public int maxHealth = 100;
+
+    //public int maxKills = 0;
+    //public int maxTreasure = 0;
 
     void Start()
     {
         // Set the max health at the start
-        maxHealth = healthPlayer;
+        currentHealth = maxHealth;
 
         // Optional: Set the slider's max value
         PlayerSlider.maxValue = maxHealth;
@@ -33,78 +34,55 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
-        // Update the text and slider value every frame
-        healthText.text = healthPlayer.ToString() + " / " + maxHealth.ToString();
-        // The slider's value is set based on the healthPlayer variable
-        PlayerSlider.value = healthPlayer;
+        // 1. Update the health UI using the local 'currentHealth' variable
+        healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
+        PlayerSlider.value = currentHealth;
 
-        // Update the text value for kills
-        killText.text = killsPlayer.ToString();
-
-        // Update the text value for treasure
-        treasureText.text = treasurePlayer.ToString();
-
+        // 2. Update KILLS and TREASURE UI by reading from the PERSISTENT GameStateManager
+        if (GameStateManager.instance != null)
+        {
+            killText.text = GameStateManager.instance.GetKills().ToString();
+            treasureText.text = GameStateManager.instance.GetTreasure().ToString();
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         Debug.Log("Player was hit by: " + other.gameObject.name);
         if (other.gameObject.tag == "Enemy")
         {
             Debug.Log("Damage dealt");
             // Only take damage if health is greater than 0
-            if (healthPlayer > 0)
+            if (currentHealth > 0)
             {
                 TakeDamage(20);
             }
         }
     }
 
-    public void TreasureCounter()
-    {
-        //if (gameObject.Player)
-        //    treasurePlayer++;
-    }
-
     public void TakeDamage(int damage)
     {
-        // 1. Decrease the healthPlayer variable
-        healthPlayer -= damage;
-
-        // 2. Clamp the health so it doesn't go below 0
-        healthPlayer = Mathf.Max(0, healthPlayer);
-
-        // 3. The Update method will automatically update the Slider and Text
-        //    based on the new healthPlayer value.
-        if (healthPlayer == 0)
         {
-            Die();
+            currentHealth -= damage;
+            currentHealth = Mathf.Max(0, currentHealth);
+
+            if (currentHealth == 0)
+            {
+                Die();
+            }
         }
     }
 
     public void Heal(int amount)
-    {
-        // Increase health by the specified amount
-        healthPlayer += amount;
+        {
+            currentHealth += amount;
+            currentHealth = Mathf.Min(currentHealth, maxHealth);
+        }
 
-        // Clamp the health so it doesn't go over maxHealth
-        // This is important for healing
-        healthPlayer = Mathf.Min(healthPlayer, maxHealth);
-
-        // The Update method will automatically refresh the UI (Slider and Text)
-        // based on the new healthPlayer value.
-    }
-
-    public void Treasure(int amount)
-    {
-        // Increase health by the specified amount
-        treasurePlayer += amount;
-    }
-
-    public void Die()
-    {
+        void Die()
+        {
             SceneManager.LoadScene(6);
+        }
     }
-}
 
 // AI Gemini helped with fixing this script

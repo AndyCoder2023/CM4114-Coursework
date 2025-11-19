@@ -11,7 +11,6 @@ public class HealthCollectible : MonoBehaviour
 
         if (controller != null)
         {
-            // *** CHANGE THIS LINE ***
             // Call the new Heal method on the PlayerControl script
             controller.Heal(20);
 

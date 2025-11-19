@@ -1,22 +1,22 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TreasureCollectible : MonoBehaviour
 {
+    // Inside TreasureCollectible.cs (or similar script)
     void OnTriggerEnter(Collider other)
     {
-        // Get the PlayerControl component from the object that entered the trigger
-        PlayerControl controller = other.GetComponent<PlayerControl>();
-
-        if (controller != null)
+        if (other.CompareTag("Player"))
         {
-            // *** CHANGE THIS LINE ***
-            // Call the new Treasure method on the PlayerControl script
-            controller.Treasure(1);
+            // Directly update the GameStateManager's persistent data.
+            if (GameStateManager.instance != null)
+            {
+                GameStateManager.instance.AddToTreasure(1);
+                Debug.Log("Treasure collected! New Total: " + GameStateManager.instance.GetTreasure());
+            }
 
-            Destroy(gameObject); // Remove the collectible from the scene
-            Debug.Log("Picked up 1 treasure!");
+            Destroy(gameObject);
         }
     }
 }

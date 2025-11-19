@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
 {
@@ -8,26 +8,30 @@ public class GameStateManager : MonoBehaviour
     public int killsPlayer;
     public int treasurePlayer;
 
-    private void Awake()
+    private void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else if (instance != this)
         {
-            Destroy(gameObject);
+            // Destroys any subsequent GameStateManager object that is loaded
+            Destroy(gameObject);
         }
     }
 
+
+    // Methods that add 1 to counters for health, kills, and treasure
     public void AddToHealth(int val)
     {
-        healthPlayer = val;
+        healthPlayer += val;
     }
 
     public void AddToKills(int val)
     {
-        killsPlayer = val;
+        killsPlayer += val;
     }
 
     public void AddToTreasure(int val)
@@ -49,7 +53,6 @@ public class GameStateManager : MonoBehaviour
     {
         return treasurePlayer;
     }
-
  
   }
 
