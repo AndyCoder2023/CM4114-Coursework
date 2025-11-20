@@ -13,14 +13,8 @@ public class PlayerControl : MonoBehaviour
 
     public int currentHealth;
 
-    //public int killsPlayer = 0;
-    //public int treasurePlayer = 0;
-
     // maxHealth will store the starting/maximum health
     public int maxHealth = 100;
-
-    //public int maxKills = 0;
-    //public int maxTreasure = 0;
 
     void Start()
     {
@@ -84,5 +78,3 @@ public class PlayerControl : MonoBehaviour
             SceneManager.LoadScene(6);
         }
     }
-
-// AI Gemini helped with fixing this script

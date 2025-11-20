@@ -17,6 +17,7 @@ TagManager:
   - Collectible
   - GameFinished
   - Gun
+  - ball
   layers:
   - Default
   - TransparentFX

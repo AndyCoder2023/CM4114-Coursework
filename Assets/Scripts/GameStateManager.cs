@@ -17,7 +17,7 @@ public class GameStateManager : MonoBehaviour
         }
         else if (instance != this)
         {
-            // Destroys any subsequent GameStateManager object that is loaded
+            // Destroys any GameStateManager object that is loaded so that the same one is kept on each level
             Destroy(gameObject);
         }
     }

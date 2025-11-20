@@ -7,8 +7,6 @@ public class BulletScript : MonoBehaviour
 
     public int power;
     public GameObject ball;
-    public int damage = 10;
-
 
     void Start()
     {

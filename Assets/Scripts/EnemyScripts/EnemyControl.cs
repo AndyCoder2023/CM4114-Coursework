@@ -6,9 +6,11 @@ public class EnemyControl : MonoBehaviour
 {
     public Slider EnemySlider;
     public TMP_Text EnemyHealthText;
+    public TMP_Text KillText;
 
     public int healthEnemy = 100;
     public int maxHealth = 0;
+    public int playerKills = 0;
 
     // Flag to ensure Die logic (like AddKills) runs only once
     private bool isDead = false;
@@ -32,7 +34,8 @@ public class EnemyControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "ball" || other.gameObject.tag == "Player")
+        // || other.gameObject.tag == "Player" "maybe add"
+        if (other.gameObject.tag == "ball")
         {
             // Only process damage if the enemy is alive
             if (!isDead)
@@ -47,7 +50,7 @@ public class EnemyControl : MonoBehaviour
         // 1. Decrease the healthEnemy variable
         healthEnemy -= damage;
 
-        // 2. Clamp the health so it doesn't go below 0
+        // 2. stop the health count so it doesn't go below 0
         healthEnemy = Mathf.Max(0, healthEnemy);
 
         // 3. Check for death after taking damage
@@ -73,3 +76,5 @@ public class EnemyControl : MonoBehaviour
         Destroy(gameObject, 0.1f); // Added a small delay for visual effect/particles if needed
     }
 }
+
+// AI Gemini helped with debugging the code and implementing placeholders for further game structure.
