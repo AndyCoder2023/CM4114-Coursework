@@ -73,8 +73,6 @@ public class EnemyControl : MonoBehaviour
         }
 
         // 2. Destroy the enemy GameObject
-        Destroy(gameObject, 0.1f); // Added a small delay for visual effect/particles if needed
+        Destroy(gameObject);
     }
 }
-
-// AI Gemini helped with debugging the code and implementing placeholders for further game structure.

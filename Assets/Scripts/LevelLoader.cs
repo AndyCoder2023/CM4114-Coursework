@@ -23,9 +23,6 @@ public class LevelLoader : MonoBehaviour
             SceneManager.LoadScene(6);
         }
     }
-
-    // Need to add exit button functionality
-  
 }
 
 // https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html
