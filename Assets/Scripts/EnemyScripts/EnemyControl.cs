@@ -10,7 +10,7 @@ public class EnemyControl : MonoBehaviour
 
     public int healthEnemy = 100;
     public int maxHealth = 0;
-    public int playerKills = 0;
+    //public int playerKills = 0;
 
     // Flag to ensure Die logic (like AddKills) runs only once
     private bool isDead = false;
