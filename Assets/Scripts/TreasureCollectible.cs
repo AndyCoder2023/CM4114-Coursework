@@ -15,7 +15,6 @@ public class TreasureCollectible : MonoBehaviour
                 GameStateManager.instance.AddToTreasure(1);
                 Debug.Log("Treasure collected! New Total: " + GameStateManager.instance.GetTreasure());
             }
-
             Destroy(gameObject);
         }
     }

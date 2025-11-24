@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
-    // These should be assigned in the Inspector
     public Slider PlayerSlider;
     public TMP_Text healthText;
     public TMP_Text killText;
@@ -21,7 +20,7 @@ public class PlayerControl : MonoBehaviour
         // Set the max health at the start
         currentHealth = maxHealth;
 
-        // Optional: Set the slider's max value
+        // Set the slider's max value
         PlayerSlider.maxValue = maxHealth;
         PlayerSlider.minValue = 0;
     }

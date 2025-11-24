@@ -18,6 +18,7 @@ TagManager:
   - GameFinished
   - Gun
   - ball
+  - enemyBall
   layers:
   - Default
   - TransparentFX
