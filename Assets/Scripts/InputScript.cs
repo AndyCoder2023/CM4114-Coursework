@@ -17,27 +17,26 @@ public class InputScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("up"))
-        {
+        //if (Input.GetKeyDown("up"))
+        //{
             speed += 1;
 
-            if (speed > 10)
+            if (speed > 5)
             {
-                speed = 10;
+                speed = 5;
             }
-            Debug.Log("Up Arrow Pressed and Speed is " + speed);
-        }
-        else if (Input.GetKeyDown("down"))
-        {
-            speed -= 1;
+        //}
+        //else if (Input.GetKeyDown("down"))
+        //{
+        //    speed -= 1;
 
-            if (speed < 0)
-            {
-                speed = 0;
-            }
+        //    if (speed < 0)
+        //    {
+        //        speed = 0;
+        //    }
 
-            Debug.Log("Down  Arrow Pressed and Speed is " + speed);
-        }
+        //    Debug.Log("Down  Arrow Pressed and Speed is " + speed);
+        //}
 
         skele.GetComponent<Animator>().SetInteger("speed", speed);
 
