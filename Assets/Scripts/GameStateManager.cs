@@ -8,6 +8,36 @@ public class GameStateManager : MonoBehaviour
     public int killsPlayer;
     public int treasurePlayer;
 
+
+    private void Start()
+    {
+        // Lock the cursor to the center of the game window
+        Cursor.lockState = CursorLockMode.Locked;
+
+        // Optionally, hide the cursor so it doesn't obstruct the view
+        Cursor.visible = false;
+    }
+
+    private void Update()
+    {
+        // (e.g., for accessing a menu) by pressing a key like 'Escape'.
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // If the cursor is locked, unlock it.
+            if (Cursor.lockState == CursorLockMode.Locked)
+            {
+                Cursor.lockState = CursorLockMode.None; // Set to 'None' to unlock
+                Cursor.visible = true; // Show the cursor
+            }
+            // If the cursor is unlocked, lock it again (optional for a toggle)
+            else if (Cursor.lockState == CursorLockMode.None)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+        }
+    }
+
     private void Awake()
     {
         if (instance == null)
